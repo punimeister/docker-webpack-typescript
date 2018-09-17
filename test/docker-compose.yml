@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  webpack-babel:
+    image: 'punimeister/webpack-typescript'
+    restart: 'on-failure'
+    environment:
+      MODE: 'development'
+      ENTRY: './web/src/entry.ts'
+      OUT_DIR: './web/public'
+      OUT_FILE: 'bundle.js'
+    volumes:
+    - '.:/app'
