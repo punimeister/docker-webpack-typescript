@@ -27,15 +27,14 @@ const commonConfig = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: [
-      '.ts',
-    ],
+    extensions: ['.tsx', '.ts', '.js'],
   },
 };
 
