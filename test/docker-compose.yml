@@ -2,7 +2,7 @@ version: '3'
 
 services:
 
-  webpack-babel:
+  webpack-typescript:
     image: 'punimeister/webpack-typescript'
     restart: 'on-failure'
     environment:
