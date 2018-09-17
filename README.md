@@ -76,10 +76,9 @@ services:
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>webpack babel testing</title>
+  <title>webpack typescript testing</title>
 </head>
 <body>
-  <div id="test"></div>
   <script src="bundle.js"></script>
 </body>
 </html>
