@@ -15,9 +15,10 @@
 
 Will be used for webpack mode
 
-### `ENTRY`
+### `ENTRY_*`
 
-Will be used for webpack entry point
+Will be used for webpack entry points  
+(See examples for details)
 
 ### `OUT_DIR`
 
@@ -40,7 +41,8 @@ Will be used for webpack output filename
     │   └── index.html
     └── src
         ├── entry.ts
-        └── module.ts
+        ├── module.ts
+        └── sub.ts
 ```
 
 ### .gitignore
@@ -62,9 +64,10 @@ services:
     restart: 'on-failure'
     environment:
       MODE: 'development'
-      ENTRY: './web/src/entry.ts'
+      ENTRY_main: './web/src/entry.ts'
+      ENTRY_sub: './web/src/sub.ts'
       OUT_DIR: './web/public'
-      OUT_FILE: 'bundle.js'
+      OUT_FILE: '[name].bundle.js'
     volumes:
     - '.:/app'
 ```
@@ -79,7 +82,8 @@ services:
   <title>webpack typescript testing</title>
 </head>
 <body>
-  <script src="bundle.js"></script>
+  <script src="main.bundle.js"></script>
+  <script src="sub.bundle.js"></script>
 </body>
 </html>
 ```
@@ -99,4 +103,13 @@ greeting(message);
 export default function greeting(msg: string) {
   alert(msg);
 }
+```
+
+### sub.ts
+
+```
+import greeting from './module';
+
+let message: string = 'nice to meet you';
+greeting(message);
 ```
