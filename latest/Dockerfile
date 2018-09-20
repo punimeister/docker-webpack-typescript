@@ -7,7 +7,6 @@ RUN mkdir -m 644 /app
 WORKDIR /app
 
 ENV MODE='development' \
-    ENTRY='' \
     OUT_DIR='' \
     OUT_FILE=''
 

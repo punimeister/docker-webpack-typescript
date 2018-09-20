@@ -3,10 +3,6 @@
  * @link https://webpack.js.org/configuration/
  ************************************************/
 
-if (!process.env.ENTRY) {
-  console.log('Environment variable "ENTRY" is required.');
-  process.exit();
-}
 if (!process.env.OUT_DIR) {
   console.log('Environment variable "OUT_DIR" is required.');
   process.exit();
@@ -16,11 +12,27 @@ if (!process.env.OUT_FILE) {
   process.exit();
 }
 
+function pickEntriesFromEnv() {
+  let entries = {};
+  let prefix = 'ENTRY_';
+  let environments = process.env;
+  for (let key in environments) {
+    if (environments.hasOwnProperty(key) && (new RegExp(`^${prefix}`)).test(key)) {
+      entries[key.replace(prefix, '')] = environments[key];
+    }
+  }
+  if (Object.keys(entries).length === 0 && entries.constructor === Object) {
+    console.log('Please set entry points.');
+    process.exit();
+  }
+  return entries;
+}
+
 const path = require('path');
 const merge = require('webpack-merge');
 
 const commonConfig = {
-  entry: process.env.ENTRY,
+  entry: pickEntriesFromEnv(),
   output: {
     path: path.resolve(__dirname, process.env.OUT_DIR),
   },
