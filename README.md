@@ -18,7 +18,7 @@ Will be used for webpack mode
 ### `ENTRY_*`
 
 Will be used for webpack entry points  
-(See examples for details)
+(See example for details)
 
 ### `OUT_DIR`
 
