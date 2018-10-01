@@ -6,8 +6,4 @@ RUN mkdir -m 755 /app
 
 WORKDIR /app
 
-ENV MODE='development' \
-    OUT_DIR='' \
-    OUT_FILE=''
-
 CMD sh /tmp/webpack.sh

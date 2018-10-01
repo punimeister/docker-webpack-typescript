@@ -3,38 +3,53 @@
  * @link https://webpack.js.org/configuration/
  ************************************************/
 
-if (!process.env.OUT_DIR) {
-  console.log('Environment variable "OUT_DIR" is required.');
-  process.exit();
-}
-if (!process.env.OUT_FILE) {
-  console.log('Environment variable "OUT_FILE" is required.');
-  process.exit();
-}
+/**
+ * webpack mode
+ * ('development' or 'production')
+ * @type {string}
+ */
+const mode = 'development' || process.env.MODE;
 
-function pickEntriesFromEnv() {
-  let entries = {};
-  let prefix = 'ENTRY_';
-  let environments = process.env;
-  for (let key in environments) {
-    if (environments.hasOwnProperty(key) && (new RegExp(`^${prefix}`)).test(key)) {
-      entries[key.replace(prefix, '')] = environments[key];
-    }
-  }
-  if (Object.keys(entries).length === 0 && entries.constructor === Object) {
-    console.log('Please set entry points.');
-    process.exit();
-  }
-  return entries;
+/**
+ * Directory in which bundle files output
+ * (relative path from this file)
+ * @type {string}
+ */
+const outputDir = '' || process.env.OUT_DIR;
+
+/**
+ * entry points
+ * @type {{}|string}
+ * @link https://webpack.js.org/concepts/entry-points/
+ */
+const entry = '' || pickEntriesFromEnv();
+
+/**
+ * output filename
+ * @type {string}
+ * @link https://webpack.js.org/concepts/output/
+ */
+const outputFile = '' || process.env.OUT_FILE;
+
+
+/*************************************************
+ * Please edit as necessary
+ ************************************************/
+
+try {
+  validate(outputDir, entry, outputFile);
+} catch (e) {
+  console.log(e);
+  process.exit();
 }
 
 const path = require('path');
 const merge = require('webpack-merge');
 
 const commonConfig = {
-  entry: pickEntriesFromEnv(),
+  entry: entry,
   output: {
-    path: path.resolve(__dirname, process.env.OUT_DIR),
+    path: path.resolve(__dirname, outputDir),
   },
   module: {
     rules: [
@@ -53,7 +68,7 @@ const commonConfig = {
 const developmentConfig = {
   mode: 'development',
   output: {
-    filename: process.env.OUT_FILE,
+    filename: outputFile,
   },
   devtool: 'source-map',
   watch: true,
@@ -66,8 +81,57 @@ const developmentConfig = {
 const productionConfig = {
   mode: 'production',
   output: {
-    filename: process.env.OUT_FILE.replace(/(.+)\.js$/, '$1.min.js'),
+    filename: outputFile.replace(/(.+)\.js$/, '$1.min.js'),
   },
 };
 
-module.exports = merge(commonConfig, process.env.MODE === 'production' ? productionConfig : developmentConfig);
+module.exports = merge(commonConfig, mode === 'production' ? productionConfig : developmentConfig);
+
+
+/*************************************************
+ * Functions
+ ************************************************/
+
+/**
+ * @param outputDir
+ * @param entry
+ * @param outputFile
+ */
+function validate(outputDir, entry, outputFile) {
+  let errors = [];
+
+  if (!outputDir) {
+    errors.push('Please set `outputDir` variable for webpack.config.js .');
+  }
+  if (isEmptyObject(entry) || !entry) {
+    errors.push('Please set `entry` variable for webpack.config.js .');
+  }
+  if (!outputFile) {
+    errors.push('Please set `outputFile` variable for webpack.config.js .');
+  }
+
+  if (errors.length > 0) throw errors.join('\n');
+}
+
+/**
+ * @param obj
+ * @returns {boolean}
+ */
+function isEmptyObject(obj) {
+  return !Object.keys(obj).length;
+}
+
+/**
+ * @returns {[]}
+ */
+function pickEntriesFromEnv() {
+  let entries = {};
+  let prefix = 'ENTRY_';
+  let environments = process.env;
+  for (let key in environments) {
+    if (environments.hasOwnProperty(key) && (new RegExp(`^${prefix}`)).test(key)) {
+      entries[key.replace(prefix, '')] = environments[key];
+    }
+  }
+  return entries;
+}
