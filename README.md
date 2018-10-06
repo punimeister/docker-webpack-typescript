@@ -67,7 +67,7 @@ services:
       ENTRY_main: './web/src/entry.ts'
       ENTRY_sub: './web/src/sub.ts'
       OUT_DIR: './web/public'
-      OUT_FILE: '[name].bundle.js'
+      OUT_FILE: '[name].js'
     volumes:
       - '.:/app'
 ```
