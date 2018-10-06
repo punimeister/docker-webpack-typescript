@@ -82,8 +82,8 @@ services:
   <title>webpack typescript testing</title>
 </head>
 <body>
-  <script src="main.bundle.js"></script>
-  <script src="sub.bundle.js"></script>
+  <script src="main.js"></script>
+  <script src="sub.js"></script>
 </body>
 </html>
 ```
