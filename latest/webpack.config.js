@@ -8,28 +8,28 @@
  * ('development' or 'production')
  * @type {string}
  */
-const mode = 'development' || process.env.MODE;
+const mode = process.env.MODE || 'development';
 
 /**
  * Directory in which bundle files output
  * (relative path from this file)
  * @type {string}
  */
-const outputDir = '' || process.env.OUT_DIR;
+const outputDir = process.env.OUT_DIR || '';
 
 /**
  * entry points
  * @type {{}|string}
  * @link https://webpack.js.org/concepts/entry-points/
  */
-const entry = '' || pickEntriesFromEnv();
+const entry = pickEntriesFromEnv() || '';
 
 /**
  * output filename
  * @type {string}
  * @link https://webpack.js.org/concepts/output/
  */
-const outputFile = '' || process.env.OUT_FILE;
+const outputFile = process.env.OUT_FILE || '';
 
 
 /*************************************************
@@ -133,5 +133,5 @@ function pickEntriesFromEnv() {
       entries[key.replace(prefix, '')] = environments[key];
     }
   }
-  return entries;
+  return isEmptyObject(entries) ? '' : entries;
 }
