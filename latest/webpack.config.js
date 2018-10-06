@@ -55,13 +55,13 @@ const commonConfig = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: 'awesome-typescript-loader',
         exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
 };
 

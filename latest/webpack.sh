@@ -9,4 +9,4 @@ if [ ! -e /app/webpack.config.js ]; then
   cp /tmp/webpack.config.js /app/
 fi
 yarn install --no-progress
-webpack
+yarn start

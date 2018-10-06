@@ -4,11 +4,14 @@
   "author": "punimeister",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "start": "npx webpack"
+  },
   "devDependencies": {
-    "ts-loader": "^5.1.1",
-    "typescript": "^3.0.3",
-    "webpack": "^4.17.2",
-    "webpack-cli": "^3.1.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "typescript": "^3.1.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
     "webpack-merge": "^4.1.4"
   }
 }
