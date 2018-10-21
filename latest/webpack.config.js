@@ -110,7 +110,10 @@ function validate(outputDir, entry, outputFile) {
     errors.push('Please set `outputFile` variable for webpack.config.js .');
   }
 
-  if (errors.length > 0) throw errors.join('\n');
+  if (errors.length > 0) {
+    errors.push('Example: https://github.com/punimeister/docker-webpack-typescript#example');
+    throw errors.join('\n');
+  }
 }
 
 /**
