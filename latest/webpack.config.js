@@ -101,13 +101,13 @@ function validate(outputDir, entry, outputFile) {
   let errors = [];
 
   if (!outputDir) {
-    errors.push('Please set `outputDir` variable for webpack.config.js .');
+    pushErrorMessage(errors, 'outputDir');
   }
   if (isEmptyObject(entry) || !entry) {
-    errors.push('Please set `entry` variable for webpack.config.js .');
+    pushErrorMessage(errors, 'entry');
   }
   if (!outputFile) {
-    errors.push('Please set `outputFile` variable for webpack.config.js .');
+    pushErrorMessage(errors, 'outputFile');
   }
 
   if (errors.length > 0) {
@@ -137,4 +137,12 @@ function pickEntriesFromEnv() {
     }
   }
   return isEmptyObject(entries) ? '' : entries;
+}
+
+/**
+ * @param context
+ * @param target
+ */
+function pushErrorMessage(context, target) {
+  context.push(`Please set ${target} variable for webpack.config.js .`);
 }
