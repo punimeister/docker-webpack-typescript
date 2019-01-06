@@ -1,13 +1,6 @@
-# punimeister/webpack-typescript
+# Supported tags and respective `Dockerfile` links
 
-[![Docker Stars](https://img.shields.io/docker/stars/punimeister/webpack-typescript.svg)](https://hub.docker.com/r/punimeister/webpack-typescript/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/punimeister/webpack-typescript.svg)](https://hub.docker.com/r/punimeister/webpack-typescript/)
-[![Docker Automated](https://img.shields.io/docker/automated/punimeister/webpack-typescript.svg)](https://hub.docker.com/r/punimeister/webpack-typescript/)
-[![Docker Build](https://img.shields.io/docker/build/punimeister/webpack-typescript.svg)](https://hub.docker.com/r/punimeister/webpack-typescript/)
-
-## Source Code
-
-### [webpack-typescript:latest](https://github.com/punimeister/docker-webpack-typescript/tree/master/latest)
+- [`latest` (latest/Dockerfile)](https://github.com/punimeister/docker-webpack-typescript/blob/master/latest/Dockerfile)
 
 ## Environment Variables
 
