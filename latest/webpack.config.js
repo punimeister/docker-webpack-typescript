@@ -43,6 +43,7 @@ try {
   process.exit();
 }
 
+const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
 
@@ -63,6 +64,11 @@ const commonConfig = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(mode),
+    }),
+  ],
 };
 
 const developmentConfig = {
