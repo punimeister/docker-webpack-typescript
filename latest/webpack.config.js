@@ -69,6 +69,11 @@ const commonConfig = {
       'process.env.NODE_ENV': JSON.stringify(mode),
     }),
   ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 };
 
 const developmentConfig = {
