@@ -8,16 +8,16 @@
 
 Will be used for webpack mode
 
-### `ENTRY_*`
+### `EP_*`
 
 Will be used for webpack entry points  
 (See example for details)
 
-### `OUT_DIR`
+### `OUTPUT_DIR`
 
 Will be used for webpack output directory
 
-### `OUT_FILE`
+### `OUTPUT_FILE`
 
 Will be used for webpack output filename
 
@@ -57,10 +57,10 @@ services:
     restart: 'on-failure'
     environment:
       MODE: 'development'
-      ENTRY_main: './web/src/entry.ts'
-      ENTRY_sub: './web/src/sub.ts'
-      OUT_DIR: './web/public'
-      OUT_FILE: '[name].js'
+      EP_main: './web/src/entry.ts'
+      EP_sub: './web/src/sub.ts'
+      OUTPUT_DIR: './web/public'
+      OUTPUT_FILE: '[name].js'
     volumes:
       - '.:/app'
 ```
