@@ -4,9 +4,6 @@
   "author": "punimeister",
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "start": "yarn run webpack"
-  },
   "dependencies": {
     "@babel/polyfill": "^7.2.5"
   },
