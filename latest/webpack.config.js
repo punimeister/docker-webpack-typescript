@@ -149,7 +149,7 @@ function validate({ entryPoints, outputDirectory, outputFilename }) {
   }
 
   if (errors.length > 0) {
-    errors.push('Example: https://github.com/punimeister/docker-webpack-babel#example');
+    errors.push('Example: https://github.com/punimeister/docker-webpack-typescript#example');
     throw errors.join('\n');
   }
 }
