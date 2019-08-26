@@ -40,34 +40,34 @@ Will be used for webpack output filename
 
 ### .gitignore
 
-```
+```gitignore
 node_modules
 *.js.map
 ```
 
 ### docker-compose.yml
 
-```
+```yaml
 version: '3'
 
 services:
 
   webpack-typescript:
-    image: 'punimeister/webpack-typescript'
-    restart: 'on-failure'
+    image: punimeister/webpack-typescript
+    restart: on-failure
     environment:
-      MODE: 'development'
-      EP_main: './web/src/entry.ts'
-      EP_sub: './web/src/sub.ts'
-      OUTPUT_DIR: './web/public'
+      MODE: development
+      EP_main: ./web/src/entry.ts
+      EP_sub: ./web/src/sub.ts
+      OUTPUT_DIR: ./web/public
       OUTPUT_FILE: '[name].js'
     volumes:
-      - '.:/app'
+      - .:/app
 ```
 
 ### index.html
 
-```
+```html
 <!doctype html>
 <html lang="ja">
 <head>
@@ -83,7 +83,7 @@ services:
 
 ### entry.ts
 
-```
+```typescript
 import greeting from './module';
 
 const message: string = 'hello webpack';
@@ -92,7 +92,7 @@ greeting(message);
 
 ### module.ts
 
-```
+```typescript
 export default function greeting(msg: string) {
   alert(msg);
 }
@@ -100,7 +100,7 @@ export default function greeting(msg: string) {
 
 ### sub.ts
 
-```
+```typescript
 import greeting from './module';
 
 const message: string = 'nice to meet you';

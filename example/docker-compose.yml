@@ -3,13 +3,13 @@ version: '3'
 services:
 
   webpack-typescript:
-    image: 'punimeister/webpack-typescript'
-    restart: 'on-failure'
+    image: punimeister/webpack-typescript
+    restart: on-failure
     environment:
-      MODE: 'development'
-      EP_main: './web/src/entry.ts'
-      EP_sub: './web/src/sub.ts'
-      OUTPUT_DIR: './web/public'
+      MODE: development
+      EP_main: ./web/src/entry.ts
+      EP_sub: ./web/src/sub.ts
+      OUTPUT_DIR: ./web/public
       OUTPUT_FILE: '[name].js'
     volumes:
-      - '.:/app'
+      - .:/app
